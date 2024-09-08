@@ -164,7 +164,7 @@ const EachCity = () => {
             default:           
         }
     }
-
+    
     return (
         <>
         <Header color="#FFFFFF" bgColor="#7e93a8"/>

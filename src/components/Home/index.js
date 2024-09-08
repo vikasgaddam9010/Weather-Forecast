@@ -118,10 +118,10 @@ const Home = () => {
         return (
         <>
             <div style={{display:"flex",textAlign:"center", fontWeight:"800", fontSize:"20px",borderBottom: "2px solid lightgray"}} className='link' >
-                <p className='heading' style={{width: "90px"}}>Sl.No.</p>
-                <p className='heading' style={{borderLeft:"0px",width:"350px"}}>City Name</p>
-                <p className='heading' style={{borderLeft:"0px",width:"200px"}}>Country Name</p>
-                <p className='heading' style={{borderLeft:"0px",width:"350px"}}>Time Zone</p>
+                <p className='heading width-name'>Sl.No.</p>
+                <p className='heading country-name' style={{borderLeft:"0px"}}>City Name</p>
+                <p className='heading country-width' style={{borderLeft:"0px"}}>Country Name</p>
+                <p className='heading time-zone-width' style={{borderLeft:"0px"}}>Time Zone</p>
             </div> 
                 
             <ul style={{listStyleType:"none",textAlign:"center", padding:"0px", margin: "0px 0px 150px 0px"}}>
@@ -129,14 +129,14 @@ const Home = () => {
                 { 
                     list.map((each, index) =>
                         <li onContextMenu={(event) => handleRightClick(event, each.name)} className='link'  style={{display:"flex", borderBottom: "2px solid lightgray",}} key={each.name}>                   
-                            <p className='heading'   style={{width: "90px", }}>{index+1}.</p>
+                            <p className='heading width-name'>{index+1}.</p>
                             <div onClick={handleClick}>                              
                                     <Link to={`/${each.name}`}  onContextMenu={handleRightClick} className='link'>
-                                        <p className='heading' style={{width:"350px",  borderLeft:"0px",}} >{each.name}</p>
+                                        <p className='heading  country-name' style={{borderLeft:"0px",}} >{each.name}</p>
                                     </Link>
                             </div>                                                    
-                            <p className='heading'  style={{width:"200px", borderLeft:"0px",}}>{each.cou_name_en}</p>
-                            <p className='heading'  style={{width:"350px", borderLeft:"0px",}}>{each.timezone}</p>
+                            <p className='heading country-width'  style={{borderLeft:"0px",}}>{each.cou_name_en}</p>
+                            <p className='heading time-zone-width'  style={{borderLeft:"0px",}}>{each.timezone}</p>
                         </li>
 
                     )

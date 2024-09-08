@@ -172,47 +172,39 @@ body {
   font-size: 22px;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .home-container {
-      padding: 20px;
-      margin: 10px;
-  }
-
-  .page-title {
-      font-size: 24px;
-  }
-
-  .search-input {
-      font-size: 16px;
-  }
-
-  .list-header {
-      flex-direction: column;
-  }
-
-  .heading {
-      font-size: 14px;
-      padding: 8px;
-  }
-
-  .city-item {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px;
-  }
-
-  .city-item p {
-      width: 100%;
-  }
+.width-name{
+  width:350px;
+}
+.country-name{
+  width:200px;
+}
+.country-width{
+  width: 200px;
+}
+.time-zone-width{
+  width: 350px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .page-title {
       font-size: 20px;
   }
-
+  .width-name{
+    width: 50px;
+    font-size:10px;
+  }
+  .country-name{
+    width:100px;
+    font-size:10px;
+  }
+  .country-width{
+    width:100px;
+    font-size:10px;
+  }
+  .time-zone-width{
+    width: 100px;
+    font-size: 10px;
+  }
   .search-input {
       font-size: 14px;
       padding: 8px 16px;
