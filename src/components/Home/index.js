@@ -96,7 +96,7 @@ const Home = () => {
     }
     const handleMenuClick = () => {
         if (selectedCity) {
-          window.open(`http://localhost:3000/${selectedCity}`, '_blank');
+          window.open(`https://weather-forecast-jade.vercel.app/${selectedCity}`, '_blank');
         }
         setMenuVisible(false);
       }
