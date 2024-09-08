@@ -26,7 +26,13 @@ const state = {
 const EachCity = () => {
     const [citytWeatherDetails, setCityWeatherDetails] = useState({})
     const [apiState, setApiState] = useState(state.initial)  
-    const {cityname} = useParams()  
+    const [isEnabled, setIsEnabled] = useState(true);
+
+    const {cityname} = useParams() 
+
+    const toggleButton = () => {
+        setIsEnabled(prevState => !prevState);
+    };
 
     const apiCallForCityWeatherDetails = async () => {
         setApiState(state.load)  
@@ -90,12 +96,12 @@ const EachCity = () => {
         const image = getCityTime.hours > 6 && getCityTime.hours < 18? day : dark
 
         return (
-            <div style={{padding: "30px"}}>
+            <div className='each-main-container' style={{padding: "30px"}}>
                 <div className='each-city-container' style={{backgroundImage: `url('${image}')`,cursor:"pointer"}}>
                     <div>
                     {mainWeather}
                     <div style={{display:"flex",height: "70px"}}>
-                        <p style={{fontSize:"40px", margin:"0px"}}>{(citytWeatherDetails.main.temp - 273.15).toFixed(1)}</p>
+                        <p style={{fontSize:"40px", margin:"0px"}}>{isEnabled ? citytWeatherDetails.main.temp :(citytWeatherDetails.main.temp - 273.15).toFixed(1)}</p>
                         <img src={`http://openweathermap.org/img/wn/${citytWeatherDetails.weather[0].icon}.png`} alt={citytWeatherDetails.weather[0].description} style={{height:"20px", marginTop:"10px"}}/>
                     </div>    
                     <p style={{margin:"0px 0px 10px 0px"}}>{citytWeatherDetails.weather[0].description}</p>
@@ -106,44 +112,40 @@ const EachCity = () => {
                         <p style={{fontSize:"20px", margin:"10px 0px 0px 0px"}}>{formatted}</p>
                     </div>
                 </div>
-                <div style={{display:"flex"}}>
-                    <div style={{border:"2px solid lightsalmon", borderRadius:"10px", padding:"20px 30px", minWidth:"300px", width:"30%"}}>
+                <div className='uls-container'>
+                    <div className='w-300' style={{border:"2px solid lightsalmon", borderRadius:"10px",}}>
                         <ul className='each-city-ul' style={{textAlign:"center"}}>
-                            <li key="sunrise" style={{margin:"auto", width:"150px"}}><FiSunrise style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Sunrise at <span style={{fontWeight:"800"}}>{formattedSunriseDateTimeStamp}</span> </p></li>
+                            <li key="sunrise" style={{margin:"auto", width:"150px"}}><FiSunrise style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500", marginTop:"20px"}}>Sunrise at <span style={{fontWeight:"800"}}>{formattedSunriseDateTimeStamp}</span> </p></li>
                             <hr/>
-                            <li key="sunset" style={{margin:"auto", width:"150px"}}><LuSunset style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Sunrise at <span style={{fontWeight:"800"}}>{formattedSunsetDateTimeStamp}</span></p></li>
+                            <li key="sunset" style={{margin:"auto", width:"150px"}}><LuSunset style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500", marginTop:"20px"}}>Sunrise at <span style={{fontWeight:"800"}}>{formattedSunsetDateTimeStamp}</span></p></li>
                         </ul>
                         <ul className='each-city-ul' style={{textAlign:"center"}}>
-                            <li key="sunrise"  style={{margin:"auto", width:"150px"}}><WiHumidity style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Humidity is <span style={{fontWeight:"800"}}>{citytWeatherDetails.main.humidity}</span></p></li>
+                            <li key="sunrise"  style={{margin:"auto", width:"150px"}}><WiHumidity style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500", marginTop:"20px"}}>Humidity is <span style={{fontWeight:"800"}}>{citytWeatherDetails.main.humidity}</span></p></li>
                             <hr/>
-                            <li key="sunset" style={{margin:"auto", width:"150px"}}><LiaWindSolid style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Speed is <span style={{fontWeight:"800"}}>{citytWeatherDetails.wind.speed}</span></p></li>
+                            <li key="sunset" style={{margin:"auto", width:"150px"}}><LiaWindSolid style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500", marginTop:"20px"}}>Speed is <span style={{fontWeight:"800"}}>{citytWeatherDetails.wind.speed}</span></p></li>
                         </ul>
                         
-                        <p style={{textAlign:"end"}}>Time formats are in <span style={{fontWeight:"800"}}>UTC</span></p>
+                        <p className='time-format'>Time formats are in <span style={{fontWeight:"800"}}>UTC</span></p>
                     </div>
-                    <div style={{border:"2px solid lightsalmon", margin:"0px 30px", borderRadius:"10px", padding:"20px 30px", minWidth:"300px",  width:"30%"}}>
+                    <div className="button-container" style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+                        <p style={{marginRight:"15px"}}>Units Converter</p>
+                        <button
+                            className="toggle-button"
+                            onClick={toggleButton}
+                        >
+                            {isEnabled ? <p>kelvins to celsius</p> : <p>celsius to kelvins</p>}
+                        </button>
+                    </div>
+
+                    <div className='middle-ul w-300' style={{border:"2px solid lightsalmon", borderRadius:"10px",}}>
                         <ul className='each-city-ul' style={{textAlign:"center"}}>
-                            <li key="sunrise" style={{margin:"auto", width:"150px"}}><FaTemperatureArrowUp style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Max. Temp <span style={{fontWeight:"800"}}>{(citytWeatherDetails.main.temp_max - 273.15).toFixed(1)}</span> </p></li>
+                            <li key="sunrise" style={{margin:"auto", width:"150px"}}><FaTemperatureArrowUp style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500", marginTop:"20px"}}>Max. Temp <span style={{fontWeight:"800"}}>{isEnabled ?citytWeatherDetails.main.temp_max :(citytWeatherDetails.main.temp_max - 273.15).toFixed(1)}</span> </p></li>
                             <hr/>
-                            <li key="sunset" style={{margin:"auto", width:"150px"}}><FaTemperatureArrowDown style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Min. Temp <span style={{fontWeight:"800"}}>{(citytWeatherDetails.main.temp_min - 273.15).toFixed(1)}</span></p></li>
+                            <li key="sunset" style={{margin:"auto", width:"150px"}}><FaTemperatureArrowDown style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500", marginTop:"20px"}}>Min. Temp <span style={{fontWeight:"800"}}>{isEnabled ? citytWeatherDetails.main.temp_min :  (citytWeatherDetails.main.temp_min - 273.15).toFixed(1)}</span></p></li>
                         </ul>
                         <ul className='each-city-ul' style={{textAlign:"center", marginTop:"20px"}}>
-                            <li key="sunrise"  style={{margin:"auto", marginTop:"30px", width:"150px"}}><LiaCompressArrowsAltSolid style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Pressure is <span style={{fontWeight:"800"}}>{citytWeatherDetails.main.pressure}</span></p></li>
+                            <li key="sunrise"  style={{margin:"auto", marginTop:"30px", width:"150px"}}><LiaCompressArrowsAltSolid style={{fontSize:"40px", color:"lightsalmon", marginTop:"20px"}}/><p style={{fontWeight:"500"}}>Pressure is <span style={{fontWeight:"800"}}>{citytWeatherDetails.main.pressure}</span></p></li>
                         </ul>
-                    </div>
-                    <div style={{border:"2px solid lightsalmon", borderRadius:"10px", padding:"20px 30px", minWidth:"300px", width:"30%"}}>
-                        <ul className='each-city-ul' style={{textAlign:"center"}}>
-                            <li key="sunrise" style={{margin:"auto", width:"150px"}}><FiSunrise style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Sunrise at <span style={{fontWeight:"800"}}>{formattedSunriseDateTimeStamp}</span> </p></li>
-                            <hr/>
-                            <li key="sunset" style={{margin:"auto", width:"150px"}}><LuSunset style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Sunrise at <span style={{fontWeight:"800"}}>{formattedSunsetDateTimeStamp}</span></p></li>
-                        </ul>
-                        <ul className='each-city-ul' style={{textAlign:"center"}}>
-                            <li key="sunrise"  style={{margin:"auto", width:"150px"}}><WiHumidity style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Humidity is <span style={{fontWeight:"800"}}>{citytWeatherDetails.main.humidity}</span></p></li>
-                            <hr/>
-                            <li key="sunset" style={{margin:"auto", width:"150px"}}><LiaWindSolid style={{fontSize:"40px", color:"lightsalmon"}}/><p style={{fontWeight:"500"}}>Speed is <span style={{fontWeight:"800"}}>{citytWeatherDetails.wind.speed}</span></p></li>
-                        </ul>
-                        
-                        <p style={{textAlign:"end"}}>Time formats are in <span style={{fontWeight:"800"}}>UTC</span></p>
                     </div>
                 </div>                
             </div>
