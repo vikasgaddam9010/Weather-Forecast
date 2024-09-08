@@ -1,0 +1,38 @@
+.each-city-container{
+    box-sizing: border-box;
+    padding: 40px;
+    font-size: 28px;
+    color: brown;
+    font-family: 700;
+    background-image: url('https://res.cloudinary.com/dysqgk8ph/image/upload/v1725712107/desert-landscape-with-few-bushes-mountains_1021856-12534_kch0sc.jpg');
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    min-width: 1175px;
+    height: 350px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.each-city-ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    padding: 0px;
+    list-style-type: none;
+}
+ hr{
+    height: 80px;
+    background-color: lightsalmon;
+}
+.icon{
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    margin: 0px 10px 0px 0px;
+    color: brown;
+}

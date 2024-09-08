@@ -1,0 +1,228 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  background: linear-gradient(180deg, #003366 0%, #004080 100%);
+}
+
+/* Header Styles */
+.header {
+  background-color: #002244;
+  padding: 20px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Home Container */
+.home-container {
+  padding: 30px;
+  min-height: 77vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #002d72;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 20px;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Search Input */
+.search-input {
+  outline: none;
+  border: 2px solid #ffffff;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #333333;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+  border-color: #004080;
+  box-shadow: 0 4px 8px rgba(0, 64, 128, 0.2);
+}
+
+/* List Header */
+.list-header {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #003366;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+/* Heading */
+.heading {
+  border: 2px solid #003366;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 0;
+  text-align: center;
+  font-size: 16px;
+  background-color: #002d72;
+}
+
+/* City List */
+.city-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+.city-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #003366;
+  padding: 10px;
+  background-color: #004080;
+  color: #ffffff;
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 5px;
+}
+
+.city-item:hover {
+  background-color: #003366;
+  transform: scale(1.02);
+}
+
+.city-item p {
+  margin: 0;
+  text-align: center;
+}
+
+/* Links */
+.link {
+  color: #00bfff; /* Bright cyan for good contrast */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.link:hover, .link:focus {
+  color: #ffffff; /* White color on hover for better readability */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+/* Context Menu */
+.context-menu {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #003366;
+  list-style: none;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 5px;
+}
+
+.context-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #003366;
+}
+
+.context-menu li:hover {
+  background-color: #003366;
+  color: #ffffff;
+}
+
+/* Data Not Found */
+.failed-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.data-not-found-img {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.failed-view h1 {
+  color: #ffffff;
+  font-size: 22px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .home-container {
+      padding: 20px;
+      margin: 10px;
+  }
+
+  .page-title {
+      font-size: 24px;
+  }
+
+  .search-input {
+      font-size: 16px;
+  }
+
+  .list-header {
+      flex-direction: column;
+  }
+
+  .heading {
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  .city-item {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px;
+  }
+
+  .city-item p {
+      width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+      font-size: 20px;
+  }
+
+  .search-input {
+      font-size: 14px;
+      padding: 8px 16px;
+  }
+
+  .failed-view h1 {
+      font-size: 20px;
+  }
+
+  .data-not-found-img {
+      width: 200px;
+  }
+}
