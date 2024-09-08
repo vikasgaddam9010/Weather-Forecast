@@ -117,7 +117,7 @@ const Home = () => {
         
         return (
         <>
-            <div style={{display:"flex",textAlign:"center", fontWeight:"800", fontSize:"20px",borderBottom: "2px solid lightgray"}} className='link' >
+            <div  style={{display:"flex",textAlign:"center", fontWeight:"800", fontSize:"20px",borderBottom: "2px solid lightgray"}} className='link' >
                 <p className='heading width-name'>Sl.No.</p>
                 <p className='heading country-name' style={{borderLeft:"0px"}}>City Name</p>
                 <p className='heading country-width' style={{borderLeft:"0px"}}>Country Name</p>
