@@ -1,10 +1,9 @@
-.each-city-container{
+.each-city-container {
     box-sizing: border-box;
     padding: 40px;
     font-size: 28px;
-    color: brown;
-    font-family: 700;
-    background-image: url('https://res.cloudinary.com/dysqgk8ph/image/upload/v1725712107/desert-landscape-with-few-bushes-mountains_1021856-12534_kch0sc.jpg');
+    color: #daccc4; /* Dark brown for better contrast */
+    font-family: 'Arial', sans-serif; /* Updated font family */
     border-radius: 15px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -17,22 +16,74 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
 }
-.each-city-ul{
+
+.each-city-container p {
+    margin: 0;
+}
+
+.each-city-container img {
+    display: block;
+    margin: 10px auto;
+}
+
+.each-city-ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100px;
-    padding: 0px;
+    padding: 0;
     list-style-type: none;
+    margin: 0;
 }
- hr{
+
+.each-city-ul li {
+    margin: auto; /* Centered list items */
+    display: flex;
+    flex-direction: column; /* Column layout for list items */
+    align-items: center;
+    text-align: center;
+}
+
+.each-city-ul li p {
+    margin: 0;
+    font-size: 16px; /* Adjusted for readability */
+}
+
+hr {
     height: 80px;
-    background-color: lightsalmon;
+    border: none;
+    border-top: 2px solid lightsalmon; /* Changed to border-top for cleaner look */
+    margin: 10px 0; /* Added margin for spacing */
 }
-.icon{
-    color: rgb(255, 255, 255);
+
+.icon {
+    color: #fff; /* White for better contrast */
     font-size: 30px;
-    margin: 0px 10px 0px 0px;
-    color: brown;
+    margin-right: 10px;
+    transition: color 0.3s ease; /* Added transition for hover effect */
+}
+
+.icon:hover {
+    color: #ff6347; /* Light coral for hover effect */
+}
+
+button {
+    background-color: lightsalmon; /* Button styling for retry */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition for button hover */
+}
+
+button:hover {
+    background-color: #ff4500; /* Darker shade for hover effect */
+}
+
+p {
+    font-size: 16px; /* Consistent font size for text */
 }

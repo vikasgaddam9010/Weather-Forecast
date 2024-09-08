@@ -146,17 +146,18 @@ const Home = () => {
             {menuVisible && (
                 <ul
                 style={{
+                    cursor:"pointer",
                     position: 'absolute',
                     top: menuPosition.y,
                     left: menuPosition.x,
                     backgroundColor: 'white',
                     border: 'none',
                     listStyle: 'none',
-                    padding: '10px',
-                    borderRadius:"10px"
+                    borderRadius:"10px",
+                    padding:"8px 15px"
                 }}
                 >
-                <li onClick={handleMenuClick} style={{color:"#00bbff"}}><p>Open {selectedCity} in new tab</p><ImNewTab/></li>
+                <li onClick={handleMenuClick} style={{color:"#00bbff", display:"flex",alignItems:"center"}}><p style={{margin:"0px 10px 0px 0px"}}>Open {selectedCity} in new tab</p><ImNewTab/></li>
                 </ul>
             )}
         </>

@@ -29,21 +29,17 @@ const EachCity = () => {
     const {cityname} = useParams()  
 
     const apiCallForCityWeatherDetails = async () => {
-        setApiState(state.load)
-        console.log(cityname)
-        
+        setApiState(state.load)  
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&APPID=484620e587f443fa31ba24df3f8be3ce`
         const server = await fetch(url)
         console.log(server)
         const jsonData = await server.json()
-        console.log(jsonData)
         if(server.ok){
             setCityWeatherDetails(jsonData)
             setApiState(state.success)
         }else{
             setApiState(state.fail)
-        }
-        
+        }        
     }
     useEffect(() => {        
         apiCallForCityWeatherDetails()
@@ -89,9 +85,13 @@ const EachCity = () => {
             mainWeather = <MdLightMode className='icon'/>
         }
 
+        const dark = `https://res.cloudinary.com/dysqgk8ph/image/upload/v1725817572/dark_Preview-transformed_ipmfvm.jpg`
+        const day = `https://res.cloudinary.com/dysqgk8ph/image/upload/v1725817742/AdobeStock_812087044_Preview_1_alqsem.jpg`
+        const image = getCityTime.hours > 6 && getCityTime.hours < 18? day : dark
+
         return (
             <div style={{padding: "30px"}}>
-                <div className='each-city-container'>
+                <div className='each-city-container' style={{backgroundImage: `url('${image}')`,cursor:"pointer"}}>
                     <div>
                     {mainWeather}
                     <div style={{display:"flex",height: "70px"}}>
